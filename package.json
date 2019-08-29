@@ -1,0 +1,29 @@
+{
+  "name": "upc_loans_backend",
+  "version": "1.0.0",
+  "description": "UPC Loans system",
+  "main": "server.js",
+  "scripts": {
+    "create-tables": "node scripts/create-tables.js",
+    "populate-db": "node scripts/populate-db.js",
+    "test-data": "node scripts/test-data.js",
+    "index": "node scripts/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicogcn/upc_loans_backend.git"
+  },
+  "author": "Nicolás Aldana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicogcn/upc_loans_backend/issues"
+  },
+  "homepage": "https://github.com/nicogcn/upc_loans_backend#readme",
+  "devDependencies": {
+    "sequelize-cli": "^5.5.0"
+  },
+  "dependencies": {
+    "mysql2": "^1.7.0",
+    "sequelize": "^5.17.0"
+  }
+}
