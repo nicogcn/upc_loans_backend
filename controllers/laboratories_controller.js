@@ -2,11 +2,13 @@
 const db = require("../models");
 module.exports = class LaboratoriesCotroller {
 
-	constructor(){}
+    constructor() {}
 
-	getLaboratories(callback) {
-   		db.laboratories.findAll({raw: true}).then(function (laboratories) {
-			callback(laboratories, null);
-    		});
-	};
+    getLaboratories(callback) {
+        db.laboratories.findAll({
+            raw: true
+        }).then(function (laboratories) {
+            callback(laboratories, null);
+        });
+    };
 }
