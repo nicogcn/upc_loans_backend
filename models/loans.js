@@ -64,52 +64,6 @@ module.exports = function(sequelize, DataTypes){
 			as: "materials",
 			through: db.loans_materials
 		});
-		/*
-		Loans.hasMany(db.users, {
-			foreignKey: {
-				name: "user_type",
-				allowNull: false
-			},
-			onDelete: "CASCADE",
-			sourceKey: 'id'
-
-
-		});
-
-		db.MATERIALS.belongsToMany(db.SOLICITUDE, {
-    as: 'solicitudes',
-    through: db.MATERIAL_SOLICITUDE,
-    foreignKey: 'idMaterial'
-});
-db.SOLICITUDE.belongsToMany(db.MATERIALS, {
-    as: 'materials',
-    through: db.MATERIAL_SOLICITUDE,
-    foreignKey: 'idSolicitude'
-});
-
-*/
-
-		/*	UserTypes.hasMany(db.users, {
-				foreignKey: 'type_one',
-				sourceKey: 'id'
-			});
-			UserTypes.hasMany(db.users, {
-				foreignKey: 'type_two',
-				sourceKey: 'id'
-			});
-
-
-
-			Schedules.belongsTo(db.lessons, {
-			as: "lesson",
-			foreignKey: {
-				name: "lesson_id",
-				allowNull: false
-			},
-			onDelete: "CASCADE"
-		});
-
-			*/
 	}
 
 	return Loans
