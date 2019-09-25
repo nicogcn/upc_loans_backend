@@ -35,10 +35,16 @@ module.exports = function(sequelize, DataTypes){
 			foreignKey: "laboratory_id"
 		});
 
-		Materials.belongsToMany(db.loans, {
-			as: "materials",
-			through: db.loans_materials
+        
+        Materials.hasMany(db.loan_materials, {
+			foreignKey: {
+				name: "material_id",
+				allowNull: false
+			},
+			onDelete: "CASCADE",
+			sourceKey: 'id'
 		});
+		
 	}
 
 	return Materials

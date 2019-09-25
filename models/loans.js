@@ -28,7 +28,7 @@ module.exports = function(sequelize, DataTypes){
 		},
 		status: {
 			type: DataTypes.ENUM,
-			values: ['REQUESTED_PENDING','REQUESTED_APPROVED','REQUESTED_REJECTED', 'IN_USE', 'FINISHED']
+			values: ['REQUEST_PENDING','REQUEST_APPROVED','REQUEST_REJECTED', 'IN_USE', 'FINISHED']
 		}
 	}, {
 		tableName: 'LOANS',
@@ -60,9 +60,13 @@ module.exports = function(sequelize, DataTypes){
 			foreignKey: "manager_id"
 		});
 
-		Loans.belongsToMany(db.materials, {
-			as: "materials",
-			through: db.loans_materials
+		Loans.hasMany(db.loan_materials, {
+			foreignKey: {
+				name: "loan_id",
+				allowNull: false
+			},
+			onDelete: "CASCADE",
+			sourceKey: 'id'
 		});
 	}
 
