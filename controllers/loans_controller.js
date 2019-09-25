@@ -23,7 +23,7 @@ module.exports = class LoansCotroller {
         
     }
     
-    getPendingUserLoans(user_id, callback){
+    getPendingLoans(user_id, callback){
         
     }
 

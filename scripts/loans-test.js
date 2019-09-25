@@ -4,7 +4,7 @@ let loan = {
     requestedDate: "2019-05-20",
     requestedTimeInit: "10:00",
     requestedTimeEnd: "12:00",
-    status: "REQUESTED_PENDING",
+    status: "REQUEST_PENDING",
     student_id: 1,
     laboratory_id: 1,
     materials: [1,2,3,3]

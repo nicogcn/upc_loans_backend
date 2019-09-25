@@ -41,6 +41,7 @@ module.exports = function(sequelize, DataTypes){
 				name: "material_id",
 				allowNull: false
 			},
+            as: "loans",
 			onDelete: "CASCADE",
 			sourceKey: 'id'
 		});
