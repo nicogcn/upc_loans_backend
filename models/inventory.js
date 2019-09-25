@@ -34,7 +34,7 @@ module.exports = function(sequelize, DataTypes){
 			onDelete: "CASCADE"
 		});
 
-		Inventory.hasMany(db.loans_materials, {
+		Inventory.hasMany(db.loan_materials, {
 			foreignKey: "inventory_id",
 			sourceKey: 'id'
 		});
