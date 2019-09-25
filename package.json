@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "create-tables": "node scripts/create-tables.js",
-    "populate-db": "node scripts/populate-db.js",
+    "populate-db": "node scripts/populate-database.js",
     "test-data": "node scripts/test-data.js",
     "index": "node scripts/index.js"
   },

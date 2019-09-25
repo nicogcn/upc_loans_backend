@@ -5,18 +5,12 @@ module.exports = class LoansCotroller {
 
     constructor() {}
 
-    /*getLaboratories(callback) {
-   		db.laboratories.findAll({raw: true}).then(function (laboratories) {
-			callback(laboratories, null);
-    		});
-	};*/
-
     requestLoan(loan, callback) {
 
     }
 
     updateLoan(loan, callback) {
-
+// .... 
     }
     
     getUserLoansHistory(user_id, callback){

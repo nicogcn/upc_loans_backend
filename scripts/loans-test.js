@@ -1,6 +1,6 @@
 const db = require("../models");
 
-let loan = {
+/*let loan = {
     requestedDate: "2019-05-20",
     requestedTimeInit: "10:00",
     requestedTimeEnd: "12:00",
@@ -11,17 +11,28 @@ let loan = {
 }
 
 db.loans.create(loan).then(loan_instance => {
-    console.log(loan);
-    console.log('instance', loan_instance);
-    loan_instance.addMaterials(loan.materials).then(
+//    console.log(loan);
+//    console.log('instance', loan_instance);
+   /* loan_instance.setMaterials(loan.materials).then(
         result => {
-            console.log(result);
+            console.log('result', result);
         }).catch(error => {
-        console.error(error);
+;        console.error(error);
     });
+	var loan_materials = [];
+ 	loan.materials.forEach(material => {
+		const m = { loan_id:loan_instance.id, material_id: material};
+		loan_materials.push(m);
+	});
+	console.log('lm', loan_materials);
+	db.loan_materials.bulkCreate(loan_materials).then(() => {
+console.log('ok');
 }).catch(error => {
     console.error(error);
-})
+});
+}).catch(error => {
+    console.error(error);
+})*/
 
 /*
 db.loans.create(
@@ -59,16 +70,25 @@ db.loans.create(
 	console.error(error);
 })*/
 
-/*db.loans.findAll({
+db.loans.findAll({
+    raw: true,
     include: [
         {
-            model: db.materials,
-            as: "materials"
+            model: db.loan_materials,
+            as: "materials",
+            attributes: ['id'],
+            include: [{
+                model: db.materials,
+                as: 'material'
+            }, {
+                model: db.inventory,
+                as: 'inventory'
+            }]
 		}
 	],
     where: {
-        id: 4
+        id: 11
     }
 }).then(loans => {
-    console.log(JSON.stringify(loans))
-})*/
+    console.log(loans)
+})
