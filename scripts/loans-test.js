@@ -71,7 +71,6 @@ db.loans.create(
 })*/
 
 db.loans.findAll({
-    raw: true,
     include: [
         {
             model: db.loan_materials,
@@ -79,16 +78,18 @@ db.loans.findAll({
             attributes: ['id'],
             include: [{
                 model: db.materials,
-                as: 'material'
+                as: 'material',
+                attributes: ['id', 'name', 'mark']
             }, {
                 model: db.inventory,
-                as: 'inventory'
+                as: 'inventory',
+                attributes: ['id', 'number']
             }]
 		}
 	],
     where: {
-        id: 11
+        student_id: 1
     }
 }).then(loans => {
-    console.log(loans)
+    console.log(JSON.stringify(loans))
 })
