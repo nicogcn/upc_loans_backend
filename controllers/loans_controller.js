@@ -3,9 +3,18 @@ const db = require("../models");
 
 module.exports = class LoansCotroller {
 
-
     constructor() {}
 
+    setInventoryItemForLoanMaterial(item_id, loan_material_id, callback) {
+        db.loan_materials.update({
+                inventory_id: item_id
+            }, {
+                where: {
+                    id: loan_material_id
+                }
+            }).then(loan_material => callback(loan_material, null))
+            .catch(error => callback(null, error));
+    }
     requestLoan(loan, callback) {
         db.loans.create(loan).then(loan_instance => {
             var loan_materials = [];
@@ -142,18 +151,11 @@ module.exports = class LoansCotroller {
             .catch(error => callback(null, error));
     }
 
-    setInventoryItemForLoanMaterial(item_id, loan_material_id, callback) {
-        db.loan_materials.update({
-                inventory_id: item_id
-            }, {
-                where: {
-                    id: loan_material_id
-                }
-            }).then(loan_material => callback(loan_material, null))
-            .catch(error => callback(null, error));
+    addMaterialToLoan() {
+
     }
 
-    approveLoan(loan_id, callback) {
+approveLoan(loan_id, callback) {
         this.getLoanStatus(loan_id)
             .then(status => {
                 if (status) {
