@@ -1,5 +1,5 @@
 const express = require('express');
-const validator = require('./materialsSchema');
+const validator = require('./materials_schema');
 const materialsController = require('../../controllers/materials_controller');
 var controller = new materialsController()
 const router = express.Router();
