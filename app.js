@@ -6,8 +6,8 @@ var routes = require('./routes');
 app.use(bodyParser.json());
 
 app.use('/laboratories', routes.laboratories);
+app.use('/materials', routes.materials);
 
 app.listen(port);
 
-app.post('/', (req, res) => {console.log('reicived'); res.status(200).send()});
 console.log('app listening at port: ' + port);

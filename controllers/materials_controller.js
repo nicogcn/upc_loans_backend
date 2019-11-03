@@ -43,19 +43,54 @@ module.exports = class MaterialsCotroller {
   }
 
   createMaterial(material, callback) {
-    db.materials.create(material, {
-        include: [db.inventory]
-      }).then(material => callback(material, null))
+    db.laboratories.findOne({
+        where: {
+          id: material.laboratory_id
+        },
+        attributes: ['id'],
+      })
+      .then(laboratory => {
+        if (laboratory) {
+          db.materials.create(material, {
+              include: [db.inventory]
+            }).then(material => callback(material, null))
+            .catch(error => callback(null, error));
+        } else {
+          callback(null, 'Laboratory not found')
+        }
+      })
       .catch(error => callback(null, error));
   }
 
   updateMaterial(material_id, material, callback) {
-    db.materials.update(material, {
-        where: {
-          id: material_id
-        }
-      }).then(material => callback(material, null))
-      .catch(error => callback(null, error));
+    if (material.laboratory_id) {
+      db.laboratories.findOne({
+          where: {
+            id: material.laboratory_id
+          },
+          attributes: ['id']
+        })
+        .then(laboratory => {
+          if (laboratory) {
+            db.materials.update(material, {
+                where: {
+                  id: material_id
+                }
+              }).then(result => callback(result, null))
+              .catch(error => callback(null, error));
+          } else {
+            callback(null, 'Laboratory not found');
+          }
+        })
+        .catch(error => callback(null, error));
+    } else {
+      db.materials.update(material, {
+          where: {
+            id: material_id
+          }
+        }).then(result => callback(result, null))
+        .catch(error => callback(null, error));
+    }
   }
 
   deleteMaterial(material_id, callback) {
@@ -63,13 +98,26 @@ module.exports = class MaterialsCotroller {
         where: {
           id: material_id
         }
-      }).then(material => callback(material, null))
+      }).then(result => callback(result, null))
       .catch(error => callback(null, error));
   }
 
   addItemToMaterialInventory(item, callback) {
-    db.inventory.create(item)
-      .then(item => callback(item, null))
+    db.materials.findOne({
+        where: {
+          id: item.material_id
+        },
+        attributes: ['id']
+      })
+      .then(material => {
+        if (material) {
+          db.inventory.create(item)
+            .then(item => callback(item, null))
+            .catch(error => callback(null, error));
+        } else {
+          callback(null, 'Material not found')
+        }
+      })
       .catch(error => callback(null, error));
   }
 

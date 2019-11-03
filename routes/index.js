@@ -1,5 +1,7 @@
 const laboratoriesRoutes = require('./laboratories')
+const materialsRoutes = require('./materials')
 
 module.exports = {
-    laboratories: laboratoriesRoutes
+    laboratories: laboratoriesRoutes,
+    materials: materialsRoutes
 }
