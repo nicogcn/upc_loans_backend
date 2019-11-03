@@ -1,7 +1,7 @@
 "use strict";
 const db = require("../models");
 
-module.exports = class MaterialsCotroller {
+module.exports = class MaterialsController {
 
   constructor() {}
 

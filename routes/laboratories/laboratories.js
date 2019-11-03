@@ -1,7 +1,7 @@
 const express = require('express');
 const validator = require('./laboratories_schema');
-const laboratoriesController = require('../../controllers/laboratories_controller');
-var controller = new laboratoriesController()
+const LaboratoriesController = require('../../controllers/laboratories_controller');
+const controller = new LaboratoriesController()
 const router = express.Router();
 
 router.get('/', (req, res, next) => {

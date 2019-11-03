@@ -1,7 +1,7 @@
 const express = require('express');
 const validator = require('./materials_schema');
-const materialsController = require('../../controllers/materials_controller');
-var controller = new materialsController()
+const MaterialsController = require('../../controllers/materials_controller');
+var controller = new MaterialsController()
 const router = express.Router();
 
 router.get('/laboratory/:id', (req, res, next) => {
