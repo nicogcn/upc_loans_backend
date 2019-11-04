@@ -1,6 +1,6 @@
 const Joi = require('@hapi/joi');
 module.exports = {
-  id: Joi.number().integer().min(1).label('id'),
+  id: Joi.number().integer().min(1).label('id').required(),
   newMaterial: Joi.object().keys({
     name: Joi.string().required().max(75),
     mark: Joi.string().required().max(30),

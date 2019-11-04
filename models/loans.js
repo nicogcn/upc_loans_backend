@@ -6,23 +6,23 @@ module.exports = function(sequelize, DataTypes){
 			primaryKey: true,
 			autoIncrement: true
 		},
-		requestedDate: {
+		requested_date: {
 			type: DataTypes.DATEONLY,
 			allowNull: false
 		},
-		requestedTimeInit: {
+		requested_time_init: {
 			type: DataTypes.TIME,
 			allowNull: false
 		},
-		requestedTimeEnd: {
+		requested_time_end: {
 			type: DataTypes.TIME,
 			allowNull: false
 		},
-		loanTimeInit: {
+		loan_time_init: {
 			type: DataTypes.TIME,
 			allowNull: true
 		},
-		loanTimeEnd: {
+		loan_time_end: {
 			type: DataTypes.TIME,
 			allowNull: true
 		},
