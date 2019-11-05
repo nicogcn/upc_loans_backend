@@ -28,7 +28,9 @@ module.exports = function(sequelize, DataTypes){
 		},
 		status: {
 			type: DataTypes.ENUM,
-			values: ['REQUEST_PENDING','REQUEST_CANCELED', 'REQUEST_APPROVED','REQUEST_REJECTED', 'IN_USE', 'FINISHED']
+			values: ['REQUEST_PENDING','REQUEST_CANCELED', 'REQUEST_APPROVED','REQUEST_REJECTED', 'IN_USE', 'FINISHED'],
+			allowNull: false,
+			defaultValue: 'REQUEST_PENDING'
 		}
 	}, {
 		tableName: 'LOANS',

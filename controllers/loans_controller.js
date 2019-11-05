@@ -1,5 +1,6 @@
 "use strict";
 const db = require("../models");
+const moment = require('moment')
 
 module.exports = class LoansController {
 
@@ -16,7 +17,7 @@ module.exports = class LoansController {
         loan_materials.push(m);
       });
       db.loan_materials.bulkCreate(loan_materials).then(() => {
-        callback(loan, null);
+        callback(loan_instance, null);
       }).catch(error => {
         callback(null, error);
       });
@@ -155,11 +156,6 @@ module.exports = class LoansController {
       .catch(error => callback(null, error));
   }
 
-
-  addMaterialToLoan() {
-
-  }
-
   approveLoan(loan_id, callback) {
     this.getLoanStatus(loan_id)
       .then(status => {
@@ -227,7 +223,7 @@ module.exports = class LoansController {
           if (status == 'REQUEST_APPROVED') {
             db.loans.update({
                 status: 'IN_USE',
-                loanTimeInit: db.sequelize.fn('NOW')
+                loan_time_init: moment(Date.now()).format("HH:mm")
               }, {
                 where: {
                   id: loan_id
@@ -251,7 +247,7 @@ module.exports = class LoansController {
           if (status == 'IN_USE') {
             db.loans.update({
                 status: 'FINISHED',
-                loanTimeEnd: db.sequelize.fn('NOW')
+                loan_time_end: moment(Date.now()).format("HH:mm")
               }, {
                 where: {
                   id: loan_id

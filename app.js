@@ -7,6 +7,7 @@ app.use(bodyParser.json());
 
 app.use('/laboratories', routes.laboratories);
 app.use('/materials', routes.materials);
+app.use('/loans', routes.loans);
 
 app.listen(port);
 
