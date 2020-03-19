@@ -10,7 +10,6 @@ router.post('/', (req, res, next) => {
     value,
     error
   } = validator.requestLoan.validate(req.body);
-  console.log('rl', req.body, value);
   if (error) {
     res.status(400).send(error.message);
   } else {
